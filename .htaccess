@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+   RewriteEngine on
+   RewriteOptions MaxRedirects=1
+   RewriteBase /
+   RewriteCond %{REQUEST_FILENAME} !-f
+   RewriteCond %{REQUEST_FILENAME} !-d
+   RewriteCond %{REQUEST_FILENAME} !-l
+   RewriteRule ^show/(.*).htm$ down.php?id=$1 [L]
+   RewriteRule ^show/(.*).html$ down.php?id=$1 [L]
+   RewriteRule ^upfile/([a-zA-Z0-9_-~]*).mp4$ http://gslb.miaopai.com/stream/$1.mp4 [L]
+   RewriteRule ^u/([a-zA-Z0-9_-~]*)$ http://www.miaopai.com/u/$1 [L]
+   RewriteRule ^v/([a-zA-Z0-9_-~]*).htm$ http://www.miaopai.com/show/$1.htm [L]
+   RewriteRule ^name-(.*).htm$ name.php?q=$1 [L]
+   RewriteRule ^tag-(.*).htm$ tag.php?q=$1 [L]
+   RewriteRule ^view-(.*).htm$ view.php?id=$1 [L]
+   RewriteRule ^list-(.*).htm$ index.php?pages=$1 [L]
+   ErrorDocument 404 /index.php  
+</IfModule>
+
